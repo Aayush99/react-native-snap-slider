@@ -4,10 +4,9 @@ var React = require('react');
 var ReactNative = require('react-native');
 var PropTypes = require('prop-types');
 var createReactClass = require('create-react-class');
-
+import Slider from 'react-native-slider'
 var {
     StyleSheet,
-    Slider,
     Text,
     View,
     ViewPropTypes
@@ -130,7 +129,7 @@ var SnapSlider = createReactClass({
         return (
             <View onLayout={that._getSliderWidth} style={[defaultStyles.container, this.props.containerStyle]}>
                 {this.props.labelPosition == 'top' ? this._labelView() : null}
-                <Slider ref="slider" {...this.props} style={this._sliderStyle()} onSlidingComplete={(value) => this._onSlidingCompleteCallback(value)} value={this.state.value} />
+                <Slider ref="slider" {...this.props} style={this._sliderStyle()} onSlidingComplete={(value) => this._onSlidingCompleteCallback(value)} value={this.state.value} thumbStyle={this.props.thumbStyle} trackStyle={this.props.trackStyle}/>
                 {this.props.labelPosition === undefined || this.props.labelPosition == 'bottom' ? this._labelView() : null}
             </View>
         );
